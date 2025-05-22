@@ -1,0 +1,354 @@
+/* Variables de couleurs */
+:root {
+    --pink-light: #FFD6E0;
+    --white: #FFFFFF;
+    --blue-light: #D6E5FF;
+}
+
+/* Styles de base */
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Surcharge des styles range pour les sliders */
+input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: #4B5563;
+    outline: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: linear-gradient(to right, var(--pink-light), var(--blue-light));
+    cursor: pointer;
+}
+
+input[type=range]::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: linear-gradient(to right, var(--pink-light), var(--blue-light));
+    cursor: pointer;
+    border: none;
+}
+
+/* Style des onglets actifs */
+.stats-tab.active {
+    background-color: var(--pink-light) !important;
+    color: #1F2937 !important;
+}
+
+/* Style de la carte d'aperçu des highlights */
+.preview-card {
+    position: relative;
+}
+
+.preview-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    pointer-events: none;
+}
+
+/* Styles des checkbox et radio */
+.form-checkbox, .form-radio {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.25rem;
+    border-width: 1px;
+    border-color: #4B5563;
+    background-color: #374151;
+    padding: 0.5rem;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.form-radio {
+    border-radius: 50%;
+}
+
+.form-checkbox:checked, .form-radio:checked {
+    background-color: var(--pink-light);
+    border-color: var(--pink-light);
+}
+
+.form-checkbox:checked::after {
+    content: "✓";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1F2937;
+    font-weight: bold;
+}
+
+.form-radio:checked::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background-color: #1F2937;
+}
+
+/* Styles pour les notifications */
+.toast {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: #6B7280;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 50;
+    transform: translateX(110%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.toast.show {
+    transform: translateX(0);
+}
+
+.toast.success {
+    background-color: #10B981;
+}
+
+.toast.error {
+    background-color: #EF4444;
+	Je vais continuer avec le reste du code pour le fichier CSS admin.css et ajouter le fichier JavaScript :
+
+Copy.toast.error {
+    background-color: #EF4444;
+}
+
+.toast.warning {
+    background-color: #F59E0B;
+}
+
+.toast.info {
+    background-color: #3B82F6;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+.slide-in-right {
+    animation: slideInRight 0.3s ease-in-out;
+}
+
+/* Styles pour la modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 40;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal {
+    background-color: #1F2937;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    max-width: 500px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    transform: scale(0.95);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.modal-overlay.active .modal {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.modal-header {
+    padding: 1rem;
+    border-bottom: 1px solid #4B5563;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modal-body {
+    padding: 1rem;
+}
+
+.modal-footer {
+    padding: 1rem;
+    border-top: 1px solid #4B5563;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+
+/* Styles pour les tableaux */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table th {
+    background-color: #374151;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 600;
+}
+
+.admin-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #4B5563;
+}
+
+.admin-table tr:hover {
+    background-color: rgba(75, 85, 99, 0.2);
+}
+
+.admin-table .actions {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+}
+
+/* Styles pour les input file */
+input[type="file"] {
+    position: relative;
+    z-index: 1;
+}
+
+input[type="file"]::file-selector-button {
+    border: none;
+    background-color: #4B5563;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    color: white;
+    margin-right: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="file"]::file-selector-button:hover {
+    background-color: #6B7280;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    gap: 0.25rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.pagination-item {
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.25rem;
+    background-color: #374151;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.pagination-item:hover {
+    background-color: #4B5563;
+}
+
+.pagination-item.active {
+    background-color: var(--pink-light);
+    color: #1F2937;
+}
+
+/* Personnalisation des couleurs de bordure focus */
+input:focus, select:focus, textarea:focus {
+    outline: none !important;
+    border-color: var(--pink-light) !important;
+    box-shadow: 0 0 0 2px rgba(255, 214, 224, 0.25) !important;
+}
+
+/* Style pour les étiquettes */
+.tag {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.tag-meta {
+    background-color: #10B981;
+    color: #1F2937;
+}
+
+/* Personnalisation du scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1F2937;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #4B5563;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #6B7280;
+}

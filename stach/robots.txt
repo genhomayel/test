@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# Exclure les dossiers administratifs et techniques
+Disallow: /includes/
+Disallow: /admin/
+Disallow: /js/
+Disallow: /script/
+Disallow: /uploads/
+
+# Exclure les scripts PHP internes
+Disallow: */functions.php
+Disallow: */config.php
+Disallow: */db.php
+
+# Empêcher l'indexation des paramètres d'URL qui créent du contenu dupliqué
+Disallow: *?*
+
+# Sitemap
+Sitemap: https://stachzer.game-link.eu/sitemap.xml
